@@ -1,14 +1,12 @@
 package message
 
 import akka.actor.{Actor, Status}
-import akka.event.{Logging, LoggingAdapter}
 
 import scala.collection.mutable
 
 class AkkaMemoryDB extends Actor {
 
     val map = new mutable.HashMap[String, Any]
-    val log: LoggingAdapter = Logging(context.system, this)
 
     override def receive: Receive = {
         case SetRequest(key, value) =>
